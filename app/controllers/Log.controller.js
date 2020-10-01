@@ -2,6 +2,7 @@ const db=require("../models");
 const config = require("../config/auth.config");
 
 const Log=db.tbllogs;
+const calltypes=db.tblcalltypes;
 
 
 exports.Logs = (req, res) => {
@@ -24,13 +25,13 @@ exports.Logs = (req, res) => {
   };
 
 
-exports.showlog = (req, res) => {
-    Log.findAll({
+exports.calltypes = (req, res) => {
+  calltypes.findAll({
        
 })
-.then(showlog => {
+.then(showtypes => {
       
-    res.status(200).send({ message: showlog });
+    res.status(200).send({ message: showtypes });
   })
     .catch(err => {
         res.status(500).send({ message: err.message });

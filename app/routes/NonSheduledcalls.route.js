@@ -1,4 +1,6 @@
+const { authJwt } = require("../middleware");
 const controller = require("../controllers/Log.controller");
+
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -10,6 +12,7 @@ module.exports = function(app) {
   });
 
   app.post("/addLog", controller.Logs);
-  app.get("/showlog", controller.showlog);
+ 
   app.post("/updatelog", controller.updatelog);
+  app.get("/getcalltypes",[authJwt.verifyToken], controller.calltypes)
 };
